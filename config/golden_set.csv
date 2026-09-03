@@ -1,0 +1,6 @@
+document_id,true_event_type,true_sentiment_score,labeled_by
+1,earnings_beat,0.6,analyst_1
+2,guidance_cut,-0.5,analyst_1
+3,litigation,-0.3,analyst_1
+4,product_launch,0.4,analyst_1
+5,other,0.0,analyst_1
