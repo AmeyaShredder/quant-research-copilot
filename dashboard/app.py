@@ -4,9 +4,17 @@ Streamlit dashboard. Deliberately thin: every panel here is a
 over base tables for drill-down). No aggregation logic lives in this
 file — that's the point of Part B.6's separation of concerns.
 
-Run: streamlit run dashboard/app.py
+Run (from the repo root): streamlit run dashboard/app.py
 """
 from __future__ import annotations
+
+import os
+import sys
+
+# streamlit runs this file directly (like `python dashboard/app.py`), which
+# puts dashboard/ on sys.path instead of the repo root — so `import db...`
+# fails with "No module named 'db'" unless we add the root ourselves.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pandas as pd
 import streamlit as st

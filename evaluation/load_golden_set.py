@@ -11,7 +11,14 @@ from __future__ import annotations
 
 import csv
 import os
+import sys
 from decimal import Decimal
+
+# Same fix as dashboard/app.py: makes this runnable as either
+# `python -m evaluation.load_golden_set` (from repo root) or
+# `python evaluation/load_golden_set.py` (from anywhere) without a
+# "No module named 'db'" error.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from db.repositories import EvaluationRepository
 from db.session import get_session

@@ -173,6 +173,18 @@ alembic upgrade head
 # 5. Create the analytical views (not managed by Alembic — see note below)
 psql "$DATABASE_URL" -f db/views.sql
 
+# NOTE on "No module named 'db'": run the commands below from the repo
+# root (where this README lives). Anything invoked with `python -m ...`
+# or `python -c "..."` from the root works automatically, because
+# Python puts the current directory on sys.path in those two modes.
+# `streamlit run dashboard/app.py` and `python evaluation/load_golden_set.py`
+# are exceptions — they run the target file directly, which normally
+# puts only that file's own folder on sys.path, not the root — so both
+# files carry a small sys.path bootstrap to fix this regardless of cwd.
+# If you add your own entrypoint script under a subfolder, add the same
+# two-line bootstrap (see the top of dashboard/app.py) or run it as
+# `python -m your.module.path` instead.
+
 # 6. Run the pipeline for one ticker
 python -c "
 from agents.llm_client import LLMClient
