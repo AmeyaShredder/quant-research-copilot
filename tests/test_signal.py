@@ -2,7 +2,7 @@ import datetime as dt
 from decimal import Decimal
 
 from db.models import CriticReview, Extraction, RawDocument
-from signal.aggregator import aggregate_day
+from signals.aggregator import aggregate_day
 
 
 def _make_document(session, *, source: str) -> RawDocument:

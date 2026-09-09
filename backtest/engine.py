@@ -99,7 +99,10 @@ def compute_metrics(daily_returns: list[float], turnovers: list[float]) -> dict[
 
     arr = np.array(daily_returns)
     mean, std = arr.mean(), arr.std(ddof=1) if len(arr) > 1 else 0.0
-    sharpe = (mean / std) * math.sqrt(252) if std > 0 else 0.0
+    # Guard against near-zero float noise (e.g. constant returns can
+    # produce std ~1e-18 instead of exactly 0), which would otherwise
+    # blow up into a nonsensical sharpe of ~1e16.
+    sharpe = (mean / std) * math.sqrt(252) if std > 1e-9 else 0.0
 
     cum = np.cumsum(arr)
     running_max = np.maximum.accumulate(cum)

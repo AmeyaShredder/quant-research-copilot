@@ -3,18 +3,9 @@ services:
     image: postgres:15
     container_name: qrc_postgres
     environment:
-      POSTGRES_USER: qrc
-      POSTGRES_PASSWORD: qrc
-      POSTGRES_DB: quant_research_copilot
-    ports:
-      - "5432:5432"
-    volumes:
-      - qrc_pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U qrc -d quant_research_copilot"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  POSTGRES_DB: ${POSTGRES_DB}
 
 volumes:
   qrc_pgdata:

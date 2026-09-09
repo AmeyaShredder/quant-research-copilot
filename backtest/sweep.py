@@ -13,7 +13,7 @@ from typing import Any
 from sqlalchemy.orm import Session
 
 from backtest.engine import run_backtest
-from signal.construct import build_cross_sectional_signal
+from signals.construct import build_cross_sectional_signal
 
 
 def sweep(
