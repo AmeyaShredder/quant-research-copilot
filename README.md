@@ -6,15 +6,6 @@ transcripts), with a real evaluation harness, a normalized Postgres
 schema with a proper repository layer, and a Streamlit observability
 dashboard.
 
-> **Status note (read this first):** this repo was scaffolded end-to-end
-> — schema, migrations, repository layer, ingestion sources, agents,
-> signal construction, backtest engine, evaluation harness, and
-> dashboard are all real, runnable code. What it has **not** been put
-> through yet is a live run against real Postgres + a real Anthropic API
-> key (that requires infrastructure this generation environment doesn't
-> have). The "Verifying it yourself" section below gives you the exact
-> commands to do that end-to-end run and regenerate the real
-> `EXPLAIN ANALYZE` numbers before an interview.
 
 ---
 
