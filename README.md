@@ -237,21 +237,3 @@ clearly):
 | `signals` by `(ticker, date)` | `Seq Scan on signals (cost=0.00..1850.00 rows=40) actual time=12.400..38.900` | `Index Scan using idx_signals_ticker_date (cost=0.42..8.50 rows=40) actual time=0.031..0.089` |
 | `raw_documents` by `content_hash` | `Seq Scan on raw_documents actual time=9.800..25.100` | `Index Scan using uq_raw_documents_content_hash actual time=0.018..0.021` |
 | unreviewed `extractions` | `Seq Scan on extractions ... Filter: (NOT (hashed SubPlan 1))` | `Index Scan using idx_extractions_unreviewed actual time=0.015..0.040` |
-
----
-
-## Evaluation results
-
-Illustrative shape (run `python -c "from evaluation.harness import run_evaluation; ..."`
-against your real golden set to fill this in for real):
-
-| event_type | precision | recall | f1 |
-|---|---|---|---|
-| earnings_beat | — | — | — |
-| guidance_cut | — | — | — |
-| litigation | — | — | — |
-
-Sentiment MAE vs. golden set: **—**
-Critic disagreement vs. label error: see `critic_disagreement_vs_label_error()` output —
-if the Critic is doing useful work, `unsupported`/`contradictory` buckets
-should show a materially higher `avg_sentiment_error` than `supported`.
